@@ -107,18 +107,20 @@
             this.btnSignUp.TabIndex = 4;
             this.btnSignUp.Text = "Sign up";
             this.btnSignUp.UseVisualStyleBackColor = true;
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
             // lblErrors
             // 
             this.lblErrors.AutoSize = true;
+            this.lblErrors.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblErrors.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrors.ForeColor = System.Drawing.Color.Red;
-            this.lblErrors.Location = new System.Drawing.Point(143, 236);
+            this.lblErrors.Location = new System.Drawing.Point(12, 245);
             this.lblErrors.Name = "lblErrors";
             this.lblErrors.Size = new System.Drawing.Size(116, 23);
             this.lblErrors.TabIndex = 16;
             this.lblErrors.Text = "ErrorsGoHere";
-            this.lblErrors.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblErrors.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCancel
             // 

@@ -1,6 +1,6 @@
 ﻿namespace Enigma
 {
-    partial class frmMain
+    partial class Enigma
     {
         /// <summary>
         /// Required designer variable.

@@ -8,16 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Globalization;
 
 namespace Enigma
 {
-    public partial class frmMain : Form
+    public partial class Enigma : Form
     {
-        private DbConnection db = new DbConnection();
+        private int _userid;
+        private string _username;
 
-        public frmMain()
+        public Enigma()
         {
             InitializeComponent();
+        }
+
+        public Enigma(int userid,string username)
+        {
+            _userid = userid;
+            _username = username;
+
+            InitializeComponent();
+            lblUser.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(_username) + "'s Secrets";
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -56,6 +67,9 @@ namespace Enigma
 
             return true;
         }
+
+
+
 
     }
 }
