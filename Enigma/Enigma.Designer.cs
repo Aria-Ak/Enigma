@@ -56,6 +56,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
+            this.changeUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -207,27 +209,31 @@
             this.fieToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importToolStripMenuItem,
             this.exportToolStripMenuItem,
+            this.changeUserToolStripMenuItem,
+            this.changePasswordToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fieToolStripMenuItem.Name = "fieToolStripMenuItem";
             this.fieToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fieToolStripMenuItem.Text = "File";
+            this.fieToolStripMenuItem.Click += new System.EventHandler(this.fieToolStripMenuItem_Click);
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.importToolStripMenuItem.Text = "Import ";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.importToolStripMenuItem.Text = "Import Database";
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.exportToolStripMenuItem.Text = "Export Database";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -297,7 +303,19 @@
             this.lblUser.TabIndex = 19;
             this.lblUser.Text = "John\'s Secrets";
             // 
-            // frmMain
+            // changeUserToolStripMenuItem
+            // 
+            this.changeUserToolStripMenuItem.Name = "changeUserToolStripMenuItem";
+            this.changeUserToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.changeUserToolStripMenuItem.Text = "Change User";
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            // 
+            // Enigma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -321,7 +339,7 @@
             this.Controls.Add(this.txtRemarks);
             this.Controls.Add(this.lstSecrets);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmMain";
+            this.Name = "Enigma";
             this.Text = "Enigma";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -360,6 +378,8 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.ToolStripMenuItem changeUserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }
 

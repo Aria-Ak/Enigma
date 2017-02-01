@@ -33,7 +33,7 @@ namespace Enigma
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            
+            lstSecrets.DataSource = DbConnection.getInstance().GetSecrets(_userid);
             
         }
 
@@ -50,12 +50,13 @@ namespace Enigma
                 secretItem.Username = txtUsername.Text;
                 secretItem.Password = txtPassword.Text;
                 secretItem.Remarks= txtRemarks.Text;
-                
-                
+                secretItem.UserId = _userid;
 
-                lstSecrets.Items.Add(secretItem);
+                DbConnection.getInstance().InsertSecret(secretItem);
+                lstSecrets.DataSource = DbConnection.getInstance().GetSecrets(_userid);
             }
         }
+
 
         public bool validate()
         {
@@ -68,8 +69,14 @@ namespace Enigma
             return true;
         }
 
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void fieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

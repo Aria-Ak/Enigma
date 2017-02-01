@@ -26,7 +26,7 @@ namespace Enigma
                     lblErrors.Text = "This username already exists.";
                 } else
                 {
-                    db.CreateUser(txtusername.Text.ToLower(),txtPassword.Text);
+                    db.InsertUser(txtusername.Text.ToLower(),txtPassword.Text);
                     MessageBox.Show("Your account has created.");
                     this.Hide();
                     var loginForm = new Login();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Data.SQLite;
+using System.Collections.Generic;
 
 namespace Enigma
 {
@@ -62,13 +63,13 @@ namespace Enigma
             {
                 result = true;
             }
+            reader.Close();
             _db.Close();
-
             return result;
         }
 
 
-        public void CreateUser(string user, string pass)
+        public void InsertUser(string user, string pass)
         {
 
             string getUsername = @"INSERT INTO Users
@@ -97,12 +98,74 @@ namespace Enigma
             {
                 result = Convert.ToInt32(reader["Id"]);
             }
+            reader.Close();
             _db.Close();
             return result;
         }
 
 
+        public void InsertSecret(Secret item)
+        {
+            try
+            {
+                string sql = @"INSERT INTO Secrets
+                                    (Id, UserId,Name,Username,Password,Remarks)
+                                    Values 
+                                    (NULL,@userid,@name,@username,@password,@remarks)";
 
+                SQLiteCommand command = new SQLiteCommand(sql, _db);
+                command.Parameters.AddWithValue("@userid", item.UserId);
+                command.Parameters.AddWithValue("@name", item.Name);
+                command.Parameters.AddWithValue("@username", item.Username);
+                command.Parameters.AddWithValue("@password", item.Password);
+                command.Parameters.AddWithValue("@remarks", item.Remarks);
+
+                _db.Open();
+                command.ExecuteNonQuery();
+                _db.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+
+        public List<Secret> GetSecrets(int UserId)
+        {
+            try
+            {
+                List<Secret> list = new List<Secret>();
+                
+                string sql = "SELECT * FROM Secrets where UserId=@UserId";
+                SQLiteCommand command = new SQLiteCommand(sql, _db);
+                command.Parameters.AddWithValue("@UserId", UserId);
+                _db.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    var item = new Secret();
+
+                    item.Name = reader["Name"].ToString();
+                    item.Username = reader["Username"].ToString();
+                    item.Password = reader["Password"].ToString();
+                    item.Remarks = reader["Remarks"].ToString();
+
+                    list.Add(item);
+
+                }
+                reader.Close();
+                _db.Close();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }
