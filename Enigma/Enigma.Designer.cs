@@ -47,6 +47,8 @@
             this.fieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,8 +58,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
-            this.changeUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -220,20 +220,32 @@
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.importToolStripMenuItem.Text = "Import Database";
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.exportToolStripMenuItem.Text = "Export Database";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            // 
+            // changeUserToolStripMenuItem
+            // 
+            this.changeUserToolStripMenuItem.Name = "changeUserToolStripMenuItem";
+            this.changeUserToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.changeUserToolStripMenuItem.Text = "Change User";
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -302,18 +314,6 @@
             this.lblUser.Size = new System.Drawing.Size(100, 19);
             this.lblUser.TabIndex = 19;
             this.lblUser.Text = "John\'s Secrets";
-            // 
-            // changeUserToolStripMenuItem
-            // 
-            this.changeUserToolStripMenuItem.Name = "changeUserToolStripMenuItem";
-            this.changeUserToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.changeUserToolStripMenuItem.Text = "Change User";
-            // 
-            // changePasswordToolStripMenuItem
-            // 
-            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.changePasswordToolStripMenuItem.Text = "Change Password";
             // 
             // Enigma
             // 

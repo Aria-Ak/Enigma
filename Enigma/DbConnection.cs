@@ -10,6 +10,7 @@ namespace Enigma
         private string _path =  Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Enigma\";
         private SQLiteConnection _db;
         private static DbConnection instance = new DbConnection();
+        
 
 
         private DbConnection()
@@ -45,9 +46,25 @@ namespace Enigma
                             Username TEXT,
                             Password TEXT
                             )";
+
+            string createConfig = @"CREATE TABLE Configs (
+                            Id INTEGER PRIMARY KEY,
+                            LastUsername TEXT,
+                            LastPassword TEXT,
+                            RememberMe INTEGER,
+                            StayLoggedIn INTEGER
+                            )";
+
+
+            string InsertConfig = @"INSERT INTO Configs (Id,LastUsername,LastPassword ,RememberMe, StayLoggedIn)
+                                    VALUES 
+                                    (0,'','',0,0)";
+
             _db.Open();
             new SQLiteCommand(createSecrets, _db).ExecuteNonQuery();
             new SQLiteCommand(createUsers, _db).ExecuteNonQuery();
+            new SQLiteCommand(createConfig, _db).ExecuteNonQuery();
+            new SQLiteCommand(InsertConfig, _db).ExecuteNonQuery();
             _db.Close();
         }
 
@@ -103,6 +120,35 @@ namespace Enigma
             return result;
         }
 
+        public void InsertConfig(Config config)
+        {
+            try
+            {
+                string sql = @"UPDATE Configs
+                                SET
+                                Id = @Id,
+                                LastUsername = @LastUsername,
+                                LastPassword = @LastPassword,
+                                RememberMe = @RememberMe,
+                                StayLoggedIn = @StayLoggedIn
+                                WHERE Id = 0";
+
+                SQLiteCommand command = new SQLiteCommand(sql, _db);
+                command.Parameters.AddWithValue("@Id", 0);
+                command.Parameters.AddWithValue("@LastUsername", config.LastUsername);
+                command.Parameters.AddWithValue("@LastPassword", config.LastPassword);
+                command.Parameters.AddWithValue("@RememberMe", Convert.ToInt32(config.RememberMe));
+                command.Parameters.AddWithValue("@StayLoggedIn", Convert.ToInt32(config.StayLoggedIn));
+
+                _db.Open();
+                command.ExecuteNonQuery();
+                _db.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public void InsertSecret(Secret item)
         {
@@ -157,6 +203,59 @@ namespace Enigma
                 reader.Close();
                 _db.Close();
                 return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public Config GetConfig()
+        {
+            try
+            { 
+                var item = new Config();
+                string sql = "SELECT * FROM Configs where Id=0";
+                SQLiteCommand command = new SQLiteCommand(sql, _db);
+                _db.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    item.LastUsername = reader["LastUsername"].ToString();
+                    item.LastPassword = reader["LastPassword"].ToString();
+                    item.RememberMe = Convert.ToBoolean(reader["RememberMe"]);
+                    item.StayLoggedIn = Convert.ToBoolean(reader["StayLoggedIn"]);
+                }
+                reader.Close();
+                _db.Close();
+                return item;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public bool verifyPassword(int userid,string password)
+        {
+            try
+            {
+                bool result = false;
+                string sql = "SELECT Password FROM Users where Id=@userid";
+                SQLiteCommand command = new SQLiteCommand(sql, _db);
+                command.Parameters.AddWithValue("@UserId", userid);
+                _db.Open();
+                SQLiteDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    if (password == reader["Password"].ToString())
+                        result = true;
+                }
+                reader.Close();
+                _db.Close();
+                return result;
             }
             catch (Exception ex)
             {

@@ -23,9 +23,10 @@ namespace Enigma
             CenterToScreen();
         }
 
+
         private void Login_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void lblNewUser_Click(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace Enigma
         private bool validate()
         {
             var regexItem = new Regex("^[a-zA-Z0-9 ]*$");
+            int userid = DbConnection.getInstance().GetUserIdByName(txtUsername.Text);
 
             if (String.IsNullOrWhiteSpace(txtUsername.Text))
             {
@@ -86,6 +88,21 @@ namespace Enigma
             }
 
 
+            if (userid == 0)
+            {
+                lblErrors.Text = "This username does not exists.";
+                return false;
+            }
+
+
+            if (!DbConnection.getInstance().verifyPassword(userid,txtPassword.Text))
+            {
+                lblErrors.Text = "Password is wrong!";
+                return false;
+            }
+
+
+
             return true;
         }
 
@@ -93,20 +110,46 @@ namespace Enigma
         {
             if (validate()){
 
-                int id = DbConnection.getInstance().GetUserIdByName(txtUsername.Text);
+                int userid = DbConnection.getInstance().GetUserIdByName(txtUsername.Text);
+                var config = new Config();
+                config.LastUsername = txtUsername.Text;
+                config.LastPassword = txtPassword.Text;
 
-                if (id != 0)
-                {
-                    this.Hide();
-                    var enimga = new Enigma(id, txtUsername.Text);
-                    enimga.Closed += (s, args) => this.Close();
-                    enimga.Show();
+                if (chbRemember.Checked)
+                    config.RememberMe = true;
 
-                } else
-                {
-                    MessageBox.Show("Something is very wrong!!");
-                }
-                
+                if (chbKeepLoggedIn.Checked)
+                    config.StayLoggedIn = true;
+
+                DbConnection.getInstance().InsertConfig(config);
+
+                this.Hide();
+                var enimga = new Enigma(userid, txtUsername.Text);
+                enimga.Closed += (s, args) => this.Close();
+                enimga.Show();
+            }
+        }
+
+        private void Login_Shown(object sender, EventArgs e)
+        {
+            var config = DbConnection.getInstance().GetConfig();
+
+            if (config.RememberMe)
+            {
+                txtUsername.Text = config.LastUsername;
+                txtPassword.Text = config.LastPassword;
+                chbRemember.Checked = true;
+
+            }
+
+            if (config.StayLoggedIn)
+            {
+                var id = DbConnection.getInstance().GetUserIdByName(config.LastUsername);
+
+                this.Visible = false;
+                var enimga = new Enigma(id, txtUsername.Text);
+                enimga.Closed += (s, args) => this.Close();
+                enimga.Show();
 
             }
         }
