@@ -65,19 +65,17 @@
             // 
             this.txtUsername.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(163, 31);
-            this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(211, 28);
+            this.txtUsername.Size = new System.Drawing.Size(211, 27);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(163, 81);
-            this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(211, 28);
+            this.txtPassword.Size = new System.Drawing.Size(211, 27);
             this.txtPassword.TabIndex = 2;
             // 
             // chbRemember
@@ -125,9 +123,10 @@
             // lblErrors
             // 
             this.lblErrors.AutoSize = true;
+            this.lblErrors.BackColor = System.Drawing.SystemColors.Control;
             this.lblErrors.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrors.ForeColor = System.Drawing.Color.Red;
-            this.lblErrors.Location = new System.Drawing.Point(145, 257);
+            this.lblErrors.Location = new System.Drawing.Point(21, 257);
             this.lblErrors.Name = "lblErrors";
             this.lblErrors.Size = new System.Drawing.Size(116, 23);
             this.lblErrors.TabIndex = 12;
@@ -150,6 +149,7 @@
             this.Controls.Add(this.chbKeepLoggedIn);
             this.Controls.Add(this.btnLogin);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
