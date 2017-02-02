@@ -131,9 +131,6 @@ namespace Enigma
         }
 
 
-
-
-
         public List<Secret> GetSecrets(int UserId)
         {
             try

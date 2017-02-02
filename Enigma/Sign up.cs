@@ -104,5 +104,13 @@ namespace Enigma
 
             return true;
         }
+
+        private void lblCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form = new Login();
+            form.Closed += (s, args) => this.Close();
+            form.Show();
+        }
     }
 }

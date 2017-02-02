@@ -131,6 +131,7 @@
             this.lblCancel.TabIndex = 5;
             this.lblCancel.Text = "Cancel";
             this.lblCancel.UseVisualStyleBackColor = true;
+            this.lblCancel.Click += new System.EventHandler(this.lblCancel_Click);
             // 
             // Sign_up
             // 
