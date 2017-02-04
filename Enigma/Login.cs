@@ -13,9 +13,6 @@ namespace Enigma
 {
     public partial class Login : Form
     {
-
-      
-
         public Login()
         {
             

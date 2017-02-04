@@ -78,5 +78,46 @@ namespace Enigma
         {
 
         }
+
+        private void btnCopyUsername_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtUsername.Text))
+            {
+                System.Windows.Forms.Clipboard.SetText(txtUsername.Text);           
+            } else
+            {
+                System.Windows.Forms.Clipboard.SetText(" ");
+            }
+
+            lblErrors.Text = "Username copied to clipboard.";
+        }
+
+        private void btnCopyPassword_Click(object sender, EventArgs e)
+        {
+
+            if (!String.IsNullOrEmpty(txtPassword.Text))
+            {
+                System.Windows.Forms.Clipboard.SetText(txtPassword.Text);
+            } else
+            {
+                System.Windows.Forms.Clipboard.SetText(" ");
+            }
+
+            lblErrors.Text = "Password copied to clipboard.";
+
+        }
+
+        private void btnCopyRemarks_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtRemarks.Text))
+            {
+                System.Windows.Forms.Clipboard.SetText(txtRemarks.Text);
+            } else
+            {
+                System.Windows.Forms.Clipboard.SetText(" ");
+            }
+
+            lblErrors.Text = "Remarks copied to clipboard.";
+        }
     }
 }

@@ -268,6 +268,7 @@
             this.btnCopyRemarks.Size = new System.Drawing.Size(31, 30);
             this.btnCopyRemarks.TabIndex = 17;
             this.btnCopyRemarks.UseVisualStyleBackColor = true;
+            this.btnCopyRemarks.Click += new System.EventHandler(this.btnCopyRemarks_Click);
             // 
             // btnCopyPassword
             // 
@@ -277,6 +278,7 @@
             this.btnCopyPassword.Size = new System.Drawing.Size(31, 30);
             this.btnCopyPassword.TabIndex = 16;
             this.btnCopyPassword.UseVisualStyleBackColor = true;
+            this.btnCopyPassword.Click += new System.EventHandler(this.btnCopyPassword_Click);
             // 
             // btnCopyUsername
             // 
@@ -286,6 +288,7 @@
             this.btnCopyUsername.Size = new System.Drawing.Size(31, 30);
             this.btnCopyUsername.TabIndex = 15;
             this.btnCopyUsername.UseVisualStyleBackColor = true;
+            this.btnCopyUsername.Click += new System.EventHandler(this.btnCopyUsername_Click);
             // 
             // button2
             // 
